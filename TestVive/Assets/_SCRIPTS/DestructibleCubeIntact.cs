@@ -6,7 +6,7 @@ public class DestructibleCubeIntact : MonoBehaviour {
 
     private Vector3 lastFrameVelocity;
 
-    public static float BREAK_SPEED = 3.0f;
+    public static float BREAK_SPEED = 1.3f;
 
     // Use this for initialization
     void Start () {
@@ -21,7 +21,7 @@ public class DestructibleCubeIntact : MonoBehaviour {
 
             if ( lastFrameVelocity.magnitude - myRigidBody.velocity.magnitude  >= BREAK_SPEED )
             {
-                print("break time");
+                Debug.Log("break time");
                 replaceWithBroken();
             }
 
@@ -34,6 +34,7 @@ public class DestructibleCubeIntact : MonoBehaviour {
         this.gameObject.SetActive(false);
         GameObject myDestroyedCube;
         myDestroyedCube = Instantiate(Resources.Load("DestructibleCubeBroken"), transform.position, transform.rotation) as GameObject;
+        myDestroyedCube.transform.localScale = this.transform.localScale;
         myDestroyedCube.GetComponent<DestructibleCubeBroken>().explode();
 
         Destroy(gameObject);
