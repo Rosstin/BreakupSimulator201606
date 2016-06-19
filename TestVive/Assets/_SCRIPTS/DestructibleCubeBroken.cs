@@ -5,8 +5,6 @@ public class DestructibleCubeBroken : MonoBehaviour {
 
     public GameObject[] pieces;
 
-    public static float EXPLOSION_MAGNITUDE = 1.0f;
-
     // Use this for initialization
     void Start () {
 	
@@ -34,7 +32,7 @@ public class DestructibleCubeBroken : MonoBehaviour {
             piece.GetComponent<Rigidbody>().AddExplosionForce(power, explosionPosition, radius);
             */
 
-            myRigidBody.AddForce( randomDirection * randomValue * 100.0f  );
+            myRigidBody.AddForce( randomDirection * randomValue * ConstantsBreakup.EXPLOSION_MAGNITUDE  );
 
             piece.GetComponent<MeshRenderer>().material.color = new Color(1.0f-randomValue*0.5f, 1.0f-randomValue*0.3f, 1.0f-randomValue*0.1f);
         }

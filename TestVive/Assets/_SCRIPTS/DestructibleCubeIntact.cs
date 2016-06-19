@@ -6,8 +6,6 @@ public class DestructibleCubeIntact : MonoBehaviour {
 
     private Vector3 lastFrameVelocity;
 
-    public static float BREAK_SPEED = 1.3f;
-
     // Use this for initialization
     void Start () {
         myRigidBody = this.GetComponent<Rigidbody>();
@@ -19,7 +17,7 @@ public class DestructibleCubeIntact : MonoBehaviour {
         if(lastFrameVelocity != null) {
             print(lastFrameVelocity.magnitude - myRigidBody.velocity.magnitude);
 
-            if ( lastFrameVelocity.magnitude - myRigidBody.velocity.magnitude  >= BREAK_SPEED )
+            if ( lastFrameVelocity.magnitude - myRigidBody.velocity.magnitude  >= ConstantsBreakup.BREAK_SPEED )
             {
                 Debug.Log("break time");
                 replaceWithBroken();
